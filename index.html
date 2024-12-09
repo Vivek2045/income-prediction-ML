@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary Prediction</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Salary Prediction</h1>
+        <p>Enter the details below to predict salary based on features:</p>
+        <form action="/predict" method="POST">
+            <!-- Education dropdown -->
+            <div class="mb-3">
+                <label for="education" class="form-label">Education</label>
+                <select class="form-select" id="education" name="education" required>
+                    <option value="0">High School</option>
+                    <option value="1">Bachelor's</option>
+                    <option value="2">Master's</option>
+                    <option value="3">Doctorate</option>
+                </select>
+            </div>
+
+            <!-- Work Experience input -->
+            <div class="mb-3">
+                <label for="work_experience" class="form-label">Work Experience (in years)</label>
+                <input type="number" class="form-control" id="work_experience" name="work_experience" required>
+            </div>
+
+            <!-- Occupation dropdown -->
+            <div class="mb-3">
+                <label for="occupation" class="form-label">Occupation</label>
+                <select class="form-select" id="occupation" name="occupation" required>
+                    <option value="0">Technology</option>
+                    <option value="1">Healthcare</option>
+                    <option value="2">Banking</option>
+                    <option value="3">Finance</option>
+                    <option value="4">Others</option>
+                    <option value="5">Education</option>
+                </select>
+            </div>
+
+            <!-- Employment Status dropdown -->
+            <div class="mb-3">
+                <label for="employment_status" class="form-label">Employment Status</label>
+                <select class="form-select" id="employment_status" name="employment_status" required>
+                    <option value="0">Full-time</option>
+                    <option value="1">Part-time</option>
+                    <option value="2">Contract</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Predict Salary</button>
+        </form>
+
+        {% if prediction is not none %}
+            <h3 class="mt-4">Predicted Salary: ${{ prediction }}</h3>
+        {% endif %}
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
